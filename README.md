@@ -23,6 +23,10 @@ The model being hosted as built with sklearn 0.23.1.
 * wtforms -> `pip install wtforms`
 This module is leveraged in the web app.  
 
+__OR__
+
+* `pip install -r requirements.txt`
+
 ## Start the Modeling Server 
 
 From `Boston_Housing_with_flask_api` run 
