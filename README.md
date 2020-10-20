@@ -12,15 +12,15 @@ Before going through this example, it is encouraged to create a virtual python e
 
 ### via conda
 
-`conda create --name odsc-drum python=3.7`
-`conda activate odsc-drum`
-`conda install -c conda-forge --file ./requirements.txt`
+```conda create --name odsc-drum python=3.7
+conda activate odsc-drum
+conda install -c conda-forge --file ./requirements.txt```
 
 ### via venv
 
-`python3 -m venv odsc-drum`
-`source ~/odsc-drum/bin/activate`
-`pip install -r ./requirements.txt`
+```python3 -m venv odsc-drum
+source ~/odsc-drum/bin/activate
+pip install -r ./requirements.txt```
 
 ## Requirements
 
