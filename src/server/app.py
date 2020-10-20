@@ -19,6 +19,25 @@ import os
 # Forms
 # -----------------------------------------------------------
 drum_url = "http://localhost:6789/"
+try:
+    dr_monitoring = eval(os.environ.get("MLOPS_MONITORING"))
+except:
+    dr_monitoring = False
+if dr_monitoring:
+    import time
+    from datarobot.mlops.mlops import MLOps
+    from datarobot.mlops.common.enums import SpoolerType
+    deployment_id = os.environ["MLOPS_DEPLOYMENT_ID"]
+    model_id = os.environ["MLOPS_MODEL_ID"]
+    mlops = (
+        MLOps()
+        .set_deployment_id(deployment_id)
+        .set_model_id(model_id)
+        .set_spool_file_max_size(5)
+        .set_spool_max_files(1045876000)
+        .set_async_reporting(True)
+        .init()
+    )
 
 # Form Class
 class MyForm(Form):
@@ -54,15 +73,8 @@ def get_url_prefix():
     return os.environ.get('URL_PREFIX', '')
 
 
-# def get_custom_model_instance():
-#     module_name = os.environ.get('MODULE_NAME')
-#     class_name = os.environ.get('CLASS_NAME')
-#     custom_model_module = importlib.import_module(module_name)
-#     CustomModelClass = getattr(custom_model_module, class_name)
-#     return CustomModelClass()
-
-# custom_model = get_custom_model_instance()
 url_prefix = get_url_prefix()
+
 
 # -----------------------------------------------------------
 # Route Function
@@ -104,13 +116,22 @@ def predict_outcome():
             files = [ ('X', b_buf) ]          
             headers= {}
             response = requests.request("POST", os.path.join(drum_url,"predict"), headers=headers, data = payload, files = files)
-            prediction = response.json()["predictions"].pop()
-            ##
+            start_time = time.time()
+            prediction = response.json()["predictions"]
+            end_time = time.time()
+            ## need a timer
+            if dr_monitoring:
+                print("reporting to mlops")
+                ## report predictions and stats back
+                mlops.report_deployment_stats(1, end_time - start_time)
+                # MLOPS: report the predictions data: features, predictions, class_names
+                mlops.report_predictions_data(features_df=X, predictions=prediction)
+
 
             # prediction = custom_model.predict(X)
             print("heylksdfmlsdmsdflklmsdfsdf")
             return render_template('apis/form.html', form = form,
-                                pred = prediction)
+                                pred = prediction.pop())
 
         except ValueError:
             return render_template('apis//form.html', form=form)
