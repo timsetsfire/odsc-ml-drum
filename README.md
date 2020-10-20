@@ -10,6 +10,18 @@ The web app is based on the Boston Housing Prices dataset, and will allow a user
 
 Before going through this example, it is encouraged to create a virtual python environment via conda of virtualenv.  
 
+### via conda
+
+`conda create --name odsc-drum python=3.7`
+`conda activate odsc-drum`
+`conda install -c conda-forge --file ./requirements.txt`
+
+### via venv
+
+`python3 -m venv odsc-drum`
+`source ~/odsc-drum/bin/activate`
+`pip install -r ./requirements.txt`
+
 ## Requirements
 
 * update locations of stuff in `./src/start_model_server.sh` and `.src/start_server.sh`.  

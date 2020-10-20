@@ -18,7 +18,7 @@ import os
 # -----------------------------------------------------------
 # Forms
 # -----------------------------------------------------------
-drum_url = "http://localhost:1234/"
+drum_url = "http://localhost:6789/"
 
 # Form Class
 class MyForm(Form):
@@ -54,14 +54,14 @@ def get_url_prefix():
     return os.environ.get('URL_PREFIX', '')
 
 
-def get_custom_model_instance():
-    module_name = os.environ.get('MODULE_NAME')
-    class_name = os.environ.get('CLASS_NAME')
-    custom_model_module = importlib.import_module(module_name)
-    CustomModelClass = getattr(custom_model_module, class_name)
-    return CustomModelClass()
+# def get_custom_model_instance():
+#     module_name = os.environ.get('MODULE_NAME')
+#     class_name = os.environ.get('CLASS_NAME')
+#     custom_model_module = importlib.import_module(module_name)
+#     CustomModelClass = getattr(custom_model_module, class_name)
+#     return CustomModelClass()
 
-custom_model = get_custom_model_instance()
+# custom_model = get_custom_model_instance()
 url_prefix = get_url_prefix()
 
 # -----------------------------------------------------------
