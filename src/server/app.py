@@ -104,24 +104,21 @@ def predict_outcome():
 
             data = StringIO(to_send)
             X = pd.read_csv(data)
-
-
-
             print(X)
             ## changing to drum endpoint
             b_buf = BytesIO()
             b_buf.write(X.to_csv(index=False).encode("utf-8"))
-            print(1)
             b_buf.seek(0)
             payload = {}
             files = [ ('X', b_buf) ]          
             headers= {}
-            print(2)
             start_time = time.time()
-            response = requests.request("POST", os.path.join(drum_url,"predict"), headers=headers, data = payload, files = files)
+            print('making request')
+            print(X)
+            response = requests.request("POST", os.path.join(drum_url,"predict/"), headers=headers, data = payload, files = files)
             end_time = time.time()
             prediction = response.json()["predictions"]
-            print(3)
+            print("prediciton {}".format(prediction))
             ## need a timer
             if dr_monitoring:
                 print("reporting to mlops")
@@ -136,7 +133,8 @@ def predict_outcome():
             return render_template('apis/form.html', form = form,
                                 pred = prediction.pop())
 
-        except ValueError:
+        except Exception as e:
+            print(e)
             return render_template('apis//form.html', form=form)
     else:
         return render_template('apis//form.html', form=form)
