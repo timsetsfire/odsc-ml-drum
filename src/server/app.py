@@ -15,6 +15,7 @@ from wtforms import Form, FloatField
 import requests
 from io import StringIO, BytesIO
 import os
+import time
 # -----------------------------------------------------------
 # Forms
 # -----------------------------------------------------------
@@ -24,7 +25,6 @@ try:
 except:
     dr_monitoring = False
 if dr_monitoring:
-    import time
     from datarobot.mlops.mlops import MLOps
     from datarobot.mlops.common.enums import SpoolerType
     deployment_id = os.environ["MLOPS_DEPLOYMENT_ID"]
@@ -111,14 +111,17 @@ def predict_outcome():
             ## changing to drum endpoint
             b_buf = BytesIO()
             b_buf.write(X.to_csv(index=False).encode("utf-8"))
+            print(1)
             b_buf.seek(0)
             payload = {}
             files = [ ('X', b_buf) ]          
             headers= {}
-            response = requests.request("POST", os.path.join(drum_url,"predict"), headers=headers, data = payload, files = files)
+            print(2)
             start_time = time.time()
-            prediction = response.json()["predictions"]
+            response = requests.request("POST", os.path.join(drum_url,"predict"), headers=headers, data = payload, files = files)
             end_time = time.time()
+            prediction = response.json()["predictions"]
+            print(3)
             ## need a timer
             if dr_monitoring:
                 print("reporting to mlops")
