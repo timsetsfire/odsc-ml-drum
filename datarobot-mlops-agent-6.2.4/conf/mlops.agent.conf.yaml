@@ -4,7 +4,7 @@
 mlopsUrl: "https://app.datarobot.com"
 
 # DataRobot API token
-apiToken: "L-KEWy2boF5520IYONK096R-XzHOuVsk"
+apiToken: "token"
 
 # Execute the agent once, then exit
 runOnce: false
