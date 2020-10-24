@@ -19,25 +19,19 @@ import time
 # -----------------------------------------------------------
 # Forms
 # -----------------------------------------------------------
+
+## endpoint for model
 drum_url = "http://localhost:6789/"
-try:
-    dr_monitoring = eval(os.environ.get("MLOPS_MONITORING"))
-except:
-    dr_monitoring = False
-if dr_monitoring:
-    from datarobot.mlops.mlops import MLOps
-    from datarobot.mlops.common.enums import SpoolerType
-    deployment_id = os.environ["MLOPS_DEPLOYMENT_ID"]
-    model_id = os.environ["MLOPS_MODEL_ID"]
-    mlops = (
-        MLOps()
-        .set_deployment_id(deployment_id)
-        .set_model_id(model_id)
-        .set_spool_file_max_size(5)
-        .set_spool_max_files(1045876000)
-        .set_async_reporting(True)
-        .init()
-    )
+def score(data, endpoint):
+    b_buf = BytesIO()
+    b_buf.write(data.to_csv(index=False).encode("utf-8"))
+    b_buf.seek(0) 
+    url = "{}predict/".format(endpoint)
+    files = [
+        ('X', b_buf)
+    ]
+    response = requests.request("POST", url, files = files, timeout=None, verify=False)
+    return response
 
 # Form Class
 class MyForm(Form):
@@ -106,26 +100,17 @@ def predict_outcome():
             X = pd.read_csv(data)
             print(X)
             ## changing to drum endpoint
-            b_buf = BytesIO()
-            b_buf.write(X.to_csv(index=False).encode("utf-8"))
-            b_buf.seek(0)
-            payload = {}
-            files = [ ('X', b_buf) ]          
-            headers= {}
-            start_time = time.time()
             print('making request')
-            print(X)
-            response = requests.request("POST", os.path.join(drum_url,"predict/"), headers=headers, data = payload, files = files)
-            end_time = time.time()
+            response = score(X, drum_url)
             prediction = response.json()["predictions"]
             print("prediciton {}".format(prediction))
             ## need a timer
-            if dr_monitoring:
-                print("reporting to mlops")
-                ## report predictions and stats back
-                mlops.report_deployment_stats(1, end_time - start_time)
-                # MLOPS: report the predictions data: features, predictions, class_names
-                mlops.report_predictions_data(features_df=X, predictions=prediction)
+            # if dr_monitoring:
+            #     print("reporting to mlops")
+            #     ## report predictions and stats back
+            #     mlops.report_deployment_stats(1, end_time - start_time)
+            #     # MLOPS: report the predictions data: features, predictions, class_names
+            #     mlops.report_predictions_data(features_df=X, predictions=prediction)
 
 
             # prediction = custom_model.predict(X)
