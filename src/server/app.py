@@ -49,7 +49,7 @@ class MyForm(Form):
     b = FloatField('b', default = 396.9)
     lstat = FloatField('lstat', default = 4.98)
 
-sample_input = """crim,zn,indus,chas,nox,rm,age,dis,rad,tax,ptratio,b,lstat\n
+sample_input = """CRIM,ZN,INDUS,CHAS,NOX,RM,AGE,DIS,RAD,TAX,PTRATIO,B,LSTAT\n
 {},{},{},{},{},{},{},{},{},{},{},{},{}"""
 
 app = Flask(__name__, template_folder= 'frontend/templates', static_folder= 'frontend/static')
