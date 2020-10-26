@@ -23,7 +23,7 @@ conda install -c conda-forge --file ./requirements.txt
 ### via venv
 
 ```
-python3 -m venv odsc-drum
+python3 -m venv ~/odsc-drum
 source ~/odsc-drum/bin/activate
 pip install -r ./requirements.txt
 ```
