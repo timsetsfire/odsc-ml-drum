@@ -1,6 +1,8 @@
 # Boston Housing Model with [Drum]((https://github.com/datarobot/datarobot-user-models)) and Flask
 
-## Communication<a name="communication"></a>
+[Drum]((https://github.com/datarobot/datarobot-user-models))
+
+## DRUM Communication<a name="communication"></a>
 
 To report a bug, open an issue through the [GitHub board](https://github.com/datarobot/datarobot-user-models/issues).
 - open an issue through the [GitHub board](https://github.com/datarobot/datarobot-user-models/issues).
