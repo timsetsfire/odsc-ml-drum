@@ -130,5 +130,4 @@ WTForms==2.3.3
 xgboost==1.2.1
 xlrd==1.2.0
 zipp==3.3.1
-pandas==0.25.1
 catboost==0.24.2
