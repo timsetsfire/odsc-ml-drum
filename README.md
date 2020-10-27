@@ -1,6 +1,6 @@
-# Boston Housing Model with [Drum]((https://github.com/datarobot/datarobot-user-models)) and Flask
+# Boston Housing Model with [Drum](https://github.com/datarobot/datarobot-user-models) and Flask
 
-[Drum]((https://github.com/datarobot/datarobot-user-models))
+[Drum](https://github.com/datarobot/datarobot-user-models)
 
 ## DRUM Communication<a name="communication"></a>
 
