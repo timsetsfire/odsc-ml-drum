@@ -1,4 +1,14 @@
-# Boston Housing Model with Drum and Flask
+# Boston Housing Model with [Drum](https://github.com/datarobot/datarobot-user-models) and Flask
+
+[Drum](https://github.com/datarobot/datarobot-user-models)
+
+## DRUM Communication<a name="communication"></a>
+
+To report a bug, open an issue through the [GitHub board](https://github.com/datarobot/datarobot-user-models/issues).
+- open an issue through the [GitHub board](https://github.com/datarobot/datarobot-user-models/issues).
+- ask a question on the [#drum (IRC) channel](https://webchat.freenode.net/?channels=#drum).
+
+
 
 ## Requirements
 
