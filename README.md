@@ -4,6 +4,16 @@
 
 ## Requirements
 
+### Colab
+
+If using [google colab](https://colab.research.google.com/) import Colab Version DRUM Model Serving Made Easy.ipynb from this repo and you are done ;)
+
+You can also import the Colab Version of Brief Tour of DRUM.ipynb
+
+### Local
+
+If you choose to run this locally then please do the following.  The disadvantage of colab is that the app won't run
+
 * Python version >= 3.7
 
 If you want to follow along with section on Monitoring your deployment with DataRobot you will need
