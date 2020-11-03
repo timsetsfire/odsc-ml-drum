@@ -6,21 +6,13 @@
 
 ### Colab
 
-If using [google colab](https://colab.research.google.com/) import Colab Version DRUM Model Serving Made Easy.ipynb from this repo and you are done ;)
-
-You can also import the Colab Version of Brief Tour of DRUM.ipynb
+I recommend using the notebooks at root in colab (they are all set to go there).  Just upload notebook from git repo in colab.  
 
 ### Local
 
-If you choose to run this locally then please do the following.  The disadvantage of colab is that the app won't run
+You can set up everything to run locally and also run the flask app.  
 
 * Python version >= 3.7
-
-If you want to follow along with section on Monitoring your deployment with DataRobot you will need
-* JDK 11 or 12
-* A trial account for DataRobot, which can be gotten [here](https://www.datarobot.com/trial/)
-
-Have not tested this out on a windows machine.  
 
 ## Recommendations
 
@@ -50,10 +42,6 @@ deactivate
 source ~/odsc-drum/bin/activate
 drum --version
 ```
-
-If you see any other error, please join the #thur-timwhittaker-rajivshah-a-tutorial-on-robust-machine-learning-deployment in OdscWestVirtual Slack 
-
-This worked for me.  
 
 ### no virtual env
 
