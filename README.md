@@ -4,11 +4,11 @@
 
 ## Requirements
 
-### Colab
+### Notebooks
 
 All the notebooks in the root of this directory can be run on google colab, and this is the recommended means to follow along.  Just upload notebook from git repo in colab.  
 
-### Local
+### Flask App
 
 To run the flask app, you will need 
 
