@@ -1,4 +1,4 @@
-# Boston Housing Model with [Drum]((https://github.com/datarobot/datarobot-user-models)) and Flask
+# Hands on tutorial with [Drum]((https://github.com/datarobot/datarobot-user-models)) 
 
 [Communication](https://github.com/datarobot/datarobot-user-models#communication)
 
@@ -6,17 +6,17 @@
 
 ### Colab
 
-I recommend using the notebooks at root in colab (they are all set to go there).  Just upload notebook from git repo in colab.  
+All the notebooks in the root of this directory can be run on google colab, and this is the recommended means to follow along.  Just upload notebook from git repo in colab.  
 
 ### Local
 
-You can set up everything to run locally and also run the flask app.  
+To run the flask app, you will need 
 
 * Python version >= 3.7
 
 ## Recommendations
 
-Before going through this example, it is encouraged to create a virtual python environment via conda of virtualenv.  
+Before running the flask app, it is encouraged to create a virtual python environment via conda of virtualenv.  
 
 ### via conda
 
