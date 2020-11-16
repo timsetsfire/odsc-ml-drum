@@ -46,3 +46,11 @@ drum --version
 ### no virtual env
 
 * `pip install -r requirements.txt`
+
+### running the app and inference server
+
+in two seperate terminal sessions run 
+
+`./run_flask_app.sh` and `./run_inference_server.sh`
+
+The app will be available at http://localhost:8080/frontend/
