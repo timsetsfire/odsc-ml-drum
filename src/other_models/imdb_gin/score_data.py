@@ -37,9 +37,4 @@ def score(graphs, schema, url, port):
 
     response = requests.request("POST", url, headers=headers, data = payload)
 
-    return_bytes = response.content
-    try:
-        return pd.read_csv(BytesIO(return_bytes))
-    except Exception as e:
-        print(e)
-        return return_bytes
+    return response.content
