@@ -45,4 +45,4 @@ def score_unstructured(model, data, query, **kwargs):
    batched_graph = dgl.batch(gs)
    feats = batched_graph.ndata['attr'].float()
    preds = F.softmax(model(batched_graph, feats), dim=1).detach().numpy()
-   return pd.DataFrame(preds, columns = ["neg_class", "pos_class"]).to_csv(index=False)
+   return pd.DataFrame(preds, columns = ["neg_class", "pos_class"]).to_json(orient="records")
